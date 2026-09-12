@@ -97,13 +97,13 @@ Accept wildcard characters: False
 ```
 
 ### -projection
-How much data to return per policy. The service returns `REGULAR` when not specified.
+How much data to return per policy. The service returns `REGULAR` when not specified. `METADATA` is undocumented by the spec but confirmed live.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
-Accepted values: EXTEND, REGULAR
+Accepted values: EXTEND, REGULAR, METADATA
 
 Required: False
 Position: Named

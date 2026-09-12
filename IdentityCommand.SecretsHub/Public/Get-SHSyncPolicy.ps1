@@ -23,7 +23,7 @@ function Get-SHSyncPolicy {
             Mandatory = $false,
             ValueFromPipelinebyPropertyName = $true
         )]
-        [ValidateSet('EXTEND', 'REGULAR')]
+        [ValidateSet('EXTEND', 'REGULAR', 'METADATA')]
         [String]$projection,
 
         [parameter(

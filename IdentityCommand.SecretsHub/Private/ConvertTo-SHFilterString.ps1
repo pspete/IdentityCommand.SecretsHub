@@ -10,7 +10,7 @@ function ConvertTo-SHFilterString {
 
         name CONTAINS my AND storeName CONTAINS our
 
-    Comparison is by EQ, CONTAINS or NOTCONTAINS, and values are case insensitive. A value
+    Comparison is by EQ, CONTAINS, NOTCONTAINS, NEQ or GE, and values are case insensitive. A value
     containing whitespace is quoted, and a quote character within a quoted value is escaped with a
     backslash - both handled by ConvertTo-FilterClause. Callers pass raw values and never pre-quote.
 
@@ -53,10 +53,11 @@ function ConvertTo-SHFilterString {
 
     begin {
 
-        #The documented query language supports these three comparison operators. The secret stores
-        #endpoint's spec additionally shows HAS and GE, which are unverified and excluded until
-        #confirmed against a tenant.
-        $ValidOperator = @('EQ', 'CONTAINS', 'NOTCONTAINS')
+        #The documented query language lists EQ, CONTAINS and NOTCONTAINS; NEQ and GE are confirmed
+        #additionally, both observed live against /api/secrets (vendorSubType NEQ, GE on a numeric
+        #field) and matching that endpoint's own filter table. HAS (secret stores' behaviors field)
+        #and LE (paired with GE on several /api/secrets fields) remain unconfirmed and excluded.
+        $ValidOperator = @('EQ', 'CONTAINS', 'NOTCONTAINS', 'NEQ', 'GE')
 
         $Clauses = [System.Collections.Generic.List[string]]::new()
 

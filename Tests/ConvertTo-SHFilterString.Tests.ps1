@@ -90,12 +90,17 @@ Describe $($PSCommandPath -Replace '.Tests.ps1') {
                     Should -Be "name $_ my"
             }
 
+            It 'accepts the confirmed <_> operator' -ForEach @('NEQ', 'GE') {
+                ConvertTo-SHFilterString -Filter @{ Field = 'name'; Operator = $_; Value = 'my' } |
+                    Should -Be "name $_ my"
+            }
+
             It 'throws for an operator outside the documented query language' {
                 { ConvertTo-SHFilterString -Filter @{ Field = 'name'; Operator = 'CONTAINS_ANY'; Value = 'my' } } |
                     Should -Throw '*not a filter operator supported by the Secrets Hub service*'
             }
 
-            It 'throws for the unverified <_> operator' -ForEach @('HAS', 'GE') {
+            It 'throws for the unverified <_> operator' -ForEach @('HAS', 'LE') {
                 { ConvertTo-SHFilterString -Filter @{ Field = 'name'; Operator = $_; Value = 'my' } } |
                     Should -Throw '*not a filter operator supported by the Secrets Hub service*'
             }

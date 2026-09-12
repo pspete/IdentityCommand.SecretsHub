@@ -74,6 +74,13 @@ Describe 'Get-SHSyncPolicy' {
             } -Times 1 -Exactly -Scope It
         }
 
+        It 'accepts the METADATA projection, confirmed live even though the spec does not document it' {
+            $null = Get-SHSyncPolicy -projection METADATA
+            Should -Invoke -CommandName Invoke-IDRestMethod -ModuleName $Script:SHModuleName -ParameterFilter {
+                $URI -match 'projection=METADATA'
+            } -Times 1 -Exactly -Scope It
+        }
+
         It 'does not send the policy id as a query parameter' {
             $null = Get-SHSyncPolicy -policyId 'policy-1' -projection EXTEND
             Should -Invoke -CommandName Invoke-IDRestMethod -ModuleName $Script:SHModuleName -ParameterFilter {

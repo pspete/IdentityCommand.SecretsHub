@@ -22,3 +22,10 @@ All notable changes to this project will be documented in this file.
   service marks these endpoints deprecated; prefer defining the filter inline on the policy.
 - `Start-SHScan`, `Get-SHConfiguration`, `Set-SHConfiguration`, `Get-SHTransformation`.
 - `Get-SHModuleData`: get the module version and session configuration data.
+
+### Fixed
+
+- `ConvertTo-SHFilterString` now accepts the `NEQ` and `GE` operators, confirmed live against
+  `/api/secrets` - `HAS` and `LE` remain excluded, still unconfirmed.
+- `Get-SHSyncPolicy -projection` now accepts `METADATA`, confirmed live against `/api/policies`
+  though undocumented by the spec's `EXTEND`/`REGULAR` enum.
