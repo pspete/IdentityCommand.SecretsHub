@@ -1,12 +1,34 @@
-# Change Log
+---
+title: "IdentityCommand.SecretsHub Release 0.1"
+date: 2026-10-07 00:00:00
+version: 0.1.0
+tags:
+  - Release Notes
+  - Connect-SHTenant
+  - Get-SHSecretStore
+  - New-SHSecretStore
+  - Set-SHSecretStore
+  - Remove-SHSecretStore
+  - Test-SHSecretStoreConnection
+  - Set-SHSecretStoreState
+  - Get-SHSecret
+  - Publish-SHSecret
+  - Remove-SHSecret
+  - Get-SHSyncPolicy
+  - New-SHSyncPolicy
+  - Remove-SHSyncPolicy
+  - Set-SHSyncPolicyState
+  - Get-SHSecretsFilter
+  - New-SHSecretsFilter
+  - Remove-SHSecretsFilter
+  - Start-SHScan
+  - Get-SHConfiguration
+  - Set-SHConfiguration
+  - Get-SHTransformation
+  - Get-SHModuleData
+---
 
-All notable changes to this project will be documented in this file.
-
-## Unreleased
-
-- N/A
-
-## [0.1.0] - 2026-10-07
+## [0.1.0]
 
 ### Added
 
@@ -33,4 +55,3 @@ All notable changes to this project will be documented in this file.
   `/api/secrets` - `HAS` and `LE` remain excluded, still unconfirmed.
 - `Get-SHSyncPolicy -projection` now accepts `METADATA`, confirmed live against `/api/policies`
   though undocumented by the spec's `EXTEND`/`REGULAR` enum.
-
