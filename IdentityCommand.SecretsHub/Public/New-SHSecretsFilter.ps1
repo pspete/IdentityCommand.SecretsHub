@@ -21,7 +21,7 @@ function New-SHSecretsFilter {
 
     process {
 
-        $URI = "$($ISPSSSession.tenant_url)/api/secret-stores/$storeId/filters"
+        $URI = "$(Resolve-RequestUrl)/api/secret-stores/$storeId/filters"
 
         #PAM_SAFE is the only filter type the service supports
         $body = [ordered]@{ type = 'PAM_SAFE'; data = @{ safeName = $safeName } } | ConvertTo-Json -Depth 8

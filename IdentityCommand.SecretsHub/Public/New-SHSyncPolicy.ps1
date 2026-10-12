@@ -58,7 +58,7 @@ function New-SHSyncPolicy {
 
     process {
 
-        $URI = "$($ISPSSSession.tenant_url)/api/policies"
+        $URI = "$(Resolve-RequestUrl)/api/policies"
 
         $Policy = [ordered]@{
             name   = $name

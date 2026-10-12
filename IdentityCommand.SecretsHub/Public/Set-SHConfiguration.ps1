@@ -21,7 +21,7 @@ function Set-SHConfiguration {
 
     process {
 
-        $URI = "$($ISPSSSession.tenant_url)/api/configuration"
+        $URI = "$(Resolve-RequestUrl)/api/configuration"
 
         $SyncSettings = [ordered]@{ }
 

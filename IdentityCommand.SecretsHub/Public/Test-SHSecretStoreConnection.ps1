@@ -15,7 +15,7 @@ function Test-SHSecretStoreConnection {
 
     process {
 
-        $URI = "$($ISPSSSession.tenant_url)/api/secret-stores/$storeId/status/connection"
+        $URI = "$(Resolve-RequestUrl)/api/secret-stores/$storeId/status/connection"
 
         #Send Request
         Invoke-IDRestMethod -Uri $URI -Method GET

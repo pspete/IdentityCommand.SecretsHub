@@ -22,7 +22,7 @@ function Set-SHSyncPolicyState {
 
     process {
 
-        $URI = "$($ISPSSSession.tenant_url)/api/policies/$policyId/state"
+        $URI = "$(Resolve-RequestUrl)/api/policies/$policyId/state"
 
         $body = [ordered]@{ action = $action } | ConvertTo-Json -Depth 8
 

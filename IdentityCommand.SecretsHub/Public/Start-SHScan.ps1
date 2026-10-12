@@ -29,7 +29,7 @@ function Start-SHScan {
 
     process {
 
-        $URI = "$($ISPSSSession.tenant_url)/api/scan-definitions/$type/$id/scan"
+        $URI = "$(Resolve-RequestUrl)/api/scan-definitions/$type/$id/scan"
 
         $body = [ordered]@{ scope = @{ secretStoresIds = $secretStoresIds } } | ConvertTo-Json -Depth 8
 

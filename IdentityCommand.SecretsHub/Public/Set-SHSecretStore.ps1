@@ -36,7 +36,7 @@ function Set-SHSecretStore {
 
     process {
 
-        $URI = "$($ISPSSSession.tenant_url)/api/secret-stores/$storeId"
+        $URI = "$(Resolve-RequestUrl)/api/secret-stores/$storeId"
 
         $body = $PSBoundParameters | Get-Parameter -ParametersToRemove storeId | ConvertTo-Json -Depth 8
 

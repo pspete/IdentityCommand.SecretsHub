@@ -86,14 +86,14 @@ function Get-SHSecretStore {
 
         if ($PSCmdlet.ParameterSetName -eq 'byId') {
 
-            $URI = "$($ISPSSSession.tenant_url)/api/secret-stores/$storeId"
+            $URI = "$(Resolve-RequestUrl)/api/secret-stores/$storeId"
 
             #Send Request
             Invoke-IDRestMethod -Uri $URI -Method GET
 
         } else {
 
-            $URI = "$($ISPSSSession.tenant_url)/api/secret-stores"
+            $URI = "$(Resolve-RequestUrl)/api/secret-stores"
 
             $boundParameters = $PSBoundParameters | Get-Parameter -ParametersToRemove FilterCriteria
 
