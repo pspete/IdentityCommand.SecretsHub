@@ -7,7 +7,7 @@ function Get-SHConfiguration {
 
     process {
 
-        $URI = "$($ISPSSSession.tenant_url)/api/configuration"
+        $URI = "$(Resolve-RequestUrl)/api/configuration"
 
         #Send Request
         Invoke-IDRestMethod -Uri $URI -Method GET

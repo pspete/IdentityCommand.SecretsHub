@@ -15,7 +15,7 @@ function Remove-SHSecret {
 
     process {
 
-        $URI = "$($ISPSSSession.tenant_url)/api/secrets/$secretId"
+        $URI = "$(Resolve-RequestUrl)/api/secrets/$secretId"
 
         #The service requires fromTarget, and documents true as its only accepted value
         $URI = Add-QueryString -URI $URI -Parameter @{ fromTarget = 'true' }

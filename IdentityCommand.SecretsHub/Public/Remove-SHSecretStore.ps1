@@ -15,7 +15,7 @@ function Remove-SHSecretStore {
 
     process {
 
-        $URI = "$($ISPSSSession.tenant_url)/api/secret-stores/$storeId"
+        $URI = "$(Resolve-RequestUrl)/api/secret-stores/$storeId"
 
         if ($PSCmdlet.ShouldProcess($storeId, 'Delete Secret Store')) {
 

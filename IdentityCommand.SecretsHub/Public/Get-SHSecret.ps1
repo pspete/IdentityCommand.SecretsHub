@@ -58,7 +58,7 @@ function Get-SHSecret {
 
     process {
 
-        $URI = "$($ISPSSSession.tenant_url)/api/secrets"
+        $URI = "$(Resolve-RequestUrl)/api/secrets"
 
         $boundParameters = $PSBoundParameters | Get-Parameter -ParametersToRemove FilterCriteria
 

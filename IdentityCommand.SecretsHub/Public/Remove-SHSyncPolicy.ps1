@@ -15,7 +15,7 @@ function Remove-SHSyncPolicy {
 
     process {
 
-        $URI = "$($ISPSSSession.tenant_url)/api/policies/$policyId"
+        $URI = "$(Resolve-RequestUrl)/api/policies/$policyId"
 
         if ($PSCmdlet.ShouldProcess($policyId, 'Delete Sync Policy')) {
 

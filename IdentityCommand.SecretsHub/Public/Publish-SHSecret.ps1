@@ -50,7 +50,7 @@ function Publish-SHSecret {
 
     process {
 
-        $URI = "$($ISPSSSession.tenant_url)/api/secrets-onboarding/$sourceSecretStoreType/$targetSecretStoreType"
+        $URI = "$(Resolve-RequestUrl)/api/secrets-onboarding/$sourceSecretStoreType/$targetSecretStoreType"
 
         $body = $PSBoundParameters | Get-Parameter -ParametersToRemove sourceSecretStoreType, targetSecretStoreType |
             ConvertTo-Json -Depth 8

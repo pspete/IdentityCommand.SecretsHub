@@ -33,13 +33,13 @@ function Set-SHSecretStoreState {
 
         if ($PSCmdlet.ParameterSetName -eq 'Bulk') {
 
-            $URI = "$($ISPSSSession.tenant_url)/api/secret-stores/states"
+            $URI = "$(Resolve-RequestUrl)/api/secret-stores/states"
             $Target = "$($secretStoreIds.Count) secret stores"
             $body = [ordered]@{ action = $action; secretStoreIds = $secretStoreIds } | ConvertTo-Json -Depth 8
 
         } else {
 
-            $URI = "$($ISPSSSession.tenant_url)/api/secret-stores/$storeId/state"
+            $URI = "$(Resolve-RequestUrl)/api/secret-stores/$storeId/state"
             $Target = $storeId
             $body = [ordered]@{ action = $action } | ConvertTo-Json -Depth 8
 

@@ -26,28 +26,19 @@ The `IdentityCommand` module must be installed and available in order to use `Id
 
 ### Secrets Hub Authentication
 
-The `Connect-SHTenant` command initialises the bearer token used for module operations against the Secrets Hub service.
-
-If an Identity session already exists (established with the `IdentityCommand` module's `New-IDSession` or `New-IDPlatformToken`), it is used as-is:
+Authenticate with the `IdentityCommand` module, using `New-IDSession` (interactive user, including any MFA challenges) or `New-IDPlatformToken` (non-interactive service user). Commands find the Secrets Hub service url from the Identity session on first use - no separate connection step is needed:
 
 ```powershell
-# Resolve the Secrets Hub url automatically from the shared services subdomain
-Connect-SHTenant -tenant_subdomain sometenant
+# Interactive user authentication
+New-IDSession -tenant_url https://abc1234.id.cyberark.cloud -Credential $Credential
 
-# Or provide the Secrets Hub tenant url directly
-Connect-SHTenant -tenant_url https://sometenant.secretshub.cyberark.cloud
+# Or non-interactive service user authentication via an OAuth platform token
+New-IDPlatformToken -tenant_url https://abc1234.id.cyberark.cloud -Credential $ServiceUserCredential
+
+Get-SHSecretStore
 ```
 
-Otherwise, provide a credential and `Connect-SHTenant` authenticates to CyberArk Identity for you - the Identity tenant url is discovered from the same subdomain / url:
-
-```powershell
-# Interactive user authentication (any MFA challenges are handled by IdentityCommand)
-Connect-SHTenant -tenant_subdomain sometenant -Credential $Credential
-
-# Non-interactive service user authentication via an OAuth platform token
-Connect-SHTenant -tenant_subdomain sometenant -Credential $ServiceUserCredential -PlatformToken
-```
-
+Commands follow the current Identity session: a later `New-IDSession` or `New-IDPlatformToken` is used by the next command, and after `Close-IDSession` commands fail until you authenticate again.
 ### Secret Stores
 
 A secret store is either the **source** the secrets sync from (`PAM_PCLOUD`, `PAM_SELF_HOSTED` - one per tenant) or a **target** they are scanned in and synced to (`AWS_ASM`, `AZURE_AKV`, `GCP_GSM`, `HASHICORP_VAULT`, `HASHICORP_VAULT_ENT`):
@@ -156,7 +147,6 @@ Get-SHTransformation -transformationId $transformationId
 
 | Command                        | Description                                          |
 | ------------------------------ | ---------------------------------------------------- |
-| `Connect-SHTenant`             | Authenticate to the Secrets Hub service              |
 | `Get-SHSecretStore`            | Get secret stores                                    |
 | `New-SHSecretStore`            | Create a secret store                                |
 | `Set-SHSecretStore`            | Update a secret store                                |
@@ -272,7 +262,7 @@ Get detailed information on specific commands:
 
 ```powershell
 
-Get-Help Connect-SHTenant -Full
+Get-Help Get-SHSecretStore -Full
 
 ```
 

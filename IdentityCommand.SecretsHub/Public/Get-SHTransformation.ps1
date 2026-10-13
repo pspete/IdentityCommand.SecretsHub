@@ -15,7 +15,7 @@ function Get-SHTransformation {
 
     process {
 
-        $URI = "$($ISPSSSession.tenant_url)/api/transformations/$transformationId"
+        $URI = "$(Resolve-RequestUrl)/api/transformations/$transformationId"
 
         #Send Request
         Invoke-IDRestMethod -Uri $URI -Method GET
