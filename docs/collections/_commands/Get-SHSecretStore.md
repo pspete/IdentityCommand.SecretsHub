@@ -14,13 +14,13 @@ Gets secret stores
 
 ### byQuery (Default)
 ```
-Get-SHSecretStore [-filter <String>] [-offset <Int32>] [-limit <Int32>] [-sort <String>]
+Get-SHSecretStore [-filter <String>] [-limit <Int32>] [-sort <String>]
  [-search <String>] [<CommonParameters>]
 ```
 
 ### byFilterCriteria
 ```
-Get-SHSecretStore [-FilterCriteria <Hashtable[]>] [-offset <Int32>] [-limit <Int32>] [-sort <String>]
+Get-SHSecretStore [-FilterCriteria <Hashtable[]>] [-limit <Int32>] [-sort <String>]
  [-search <String>] [<CommonParameters>]
 ```
 
@@ -120,21 +120,6 @@ Filter clauses to assemble into a filter expression. Each is a hashtable with `F
 ```yaml
 Type: Hashtable[]
 Parameter Sets: byFilterCriteria
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -offset
-The number of secret stores to skip before returning results.
-
-```yaml
-Type: Int32
-Parameter Sets: byQuery, byFilterCriteria
 Aliases: 
 
 Required: False

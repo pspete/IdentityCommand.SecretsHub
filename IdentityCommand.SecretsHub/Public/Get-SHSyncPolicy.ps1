@@ -31,14 +31,6 @@ function Get-SHSyncPolicy {
             ValueFromPipelinebyPropertyName = $true,
             ParameterSetName = 'byQuery'
         )]
-        [ValidateRange(0, 150000)]
-        [int]$offset,
-
-        [parameter(
-            Mandatory = $false,
-            ValueFromPipelinebyPropertyName = $true,
-            ParameterSetName = 'byQuery'
-        )]
         [ValidateRange(1, 1000)]
         [int]$limit
     )

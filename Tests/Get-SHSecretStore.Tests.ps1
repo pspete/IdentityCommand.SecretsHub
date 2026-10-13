@@ -92,10 +92,10 @@ Describe 'Get-SHSecretStore' {
             } -Times 1 -Exactly -Scope It
         }
 
-        It 'sends paging and search parameters in the query string' {
-            $null = Get-SHSecretStore -limit 50 -offset 10 -search 'my-store' -sort 'name DESC'
+        It 'sends limit and search parameters in the query string' {
+            $null = Get-SHSecretStore -limit 50 -search 'my-store' -sort 'name DESC'
             Should -Invoke -CommandName Invoke-IDRestMethod -ModuleName $Script:SHModuleName -ParameterFilter {
-                ($URI -match 'limit=50') -and ($URI -match 'offset=10') -and ($URI -match 'search=my-store')
+                ($URI -match 'limit=50') -and ($URI -match 'search=my-store')
             } -Times 1 -Exactly -Scope It
         }
 

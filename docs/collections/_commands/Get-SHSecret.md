@@ -14,13 +14,13 @@ Gets the scanned secrets
 
 ### byQuery (Default)
 ```
-Get-SHSecret [-filter <String>] [-projection <String>] [-offset <Int32>] [-limit <Int32>]
+Get-SHSecret [-filter <String>] [-projection <String>] [-limit <Int32>]
  [-sort <String>] [-search <String>] [<CommonParameters>]
 ```
 
 ### byFilterCriteria
 ```
-Get-SHSecret [-FilterCriteria <Hashtable[]>] [-projection <String>] [-offset <Int32>] [-limit <Int32>]
+Get-SHSecret [-FilterCriteria <Hashtable[]>] [-projection <String>] [-limit <Int32>]
  [-sort <String>] [-search <String>] [<CommonParameters>]
 ```
 
@@ -112,21 +112,6 @@ Type: String
 Parameter Sets: (All)
 Aliases: 
 Accepted values: EXTEND, REGULAR
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -offset
-The number of secrets to skip before returning results.
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases: 
 
 Required: False
 Position: Named

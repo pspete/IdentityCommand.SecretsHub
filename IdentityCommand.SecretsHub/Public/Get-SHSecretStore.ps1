@@ -37,19 +37,6 @@ function Get-SHSecretStore {
             ValueFromPipelinebyPropertyName = $true,
             ParameterSetName = 'byFilterCriteria'
         )]
-        [ValidateRange(0, 2147483647)]
-        [int]$offset,
-
-        [parameter(
-            Mandatory = $false,
-            ValueFromPipelinebyPropertyName = $true,
-            ParameterSetName = 'byQuery'
-        )]
-        [parameter(
-            Mandatory = $false,
-            ValueFromPipelinebyPropertyName = $true,
-            ParameterSetName = 'byFilterCriteria'
-        )]
         [ValidateRange(1, 1000)]
         [int]$limit,
 

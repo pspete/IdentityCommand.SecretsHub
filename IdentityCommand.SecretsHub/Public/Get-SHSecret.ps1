@@ -29,13 +29,6 @@ function Get-SHSecret {
             Mandatory = $false,
             ValueFromPipelinebyPropertyName = $true
         )]
-        [ValidateRange(0, 150000)]
-        [int]$offset,
-
-        [parameter(
-            Mandatory = $false,
-            ValueFromPipelinebyPropertyName = $true
-        )]
         [ValidateRange(1, 1000)]
         [int]$limit,
 
