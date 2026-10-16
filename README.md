@@ -1,3 +1,7 @@
+![Logo][Logo]
+
+[Logo]: /docs/media/images/IdentityCommand.SecretsHub.png
+
 # IdentityCommand.SecretsHub
 
 **IdentityCommand.SecretsHub** is a PowerShell module that provides a set of easy-to-use commands, allowing you to interact with the **CyberArk Secrets Hub API** from within the PowerShell environment.
