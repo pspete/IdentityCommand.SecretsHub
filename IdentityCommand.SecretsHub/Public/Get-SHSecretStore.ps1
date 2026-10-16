@@ -37,19 +37,6 @@ function Get-SHSecretStore {
             ValueFromPipelinebyPropertyName = $true,
             ParameterSetName = 'byFilterCriteria'
         )]
-        [ValidateRange(0, 2147483647)]
-        [int]$offset,
-
-        [parameter(
-            Mandatory = $false,
-            ValueFromPipelinebyPropertyName = $true,
-            ParameterSetName = 'byQuery'
-        )]
-        [parameter(
-            Mandatory = $false,
-            ValueFromPipelinebyPropertyName = $true,
-            ParameterSetName = 'byFilterCriteria'
-        )]
         [ValidateRange(1, 1000)]
         [int]$limit,
 
@@ -86,14 +73,14 @@ function Get-SHSecretStore {
 
         if ($PSCmdlet.ParameterSetName -eq 'byId') {
 
-            $URI = "$($ISPSSSession.tenant_url)/api/secret-stores/$storeId"
+            $URI = "$(Resolve-RequestUrl)/api/secret-stores/$storeId"
 
             #Send Request
             Invoke-IDRestMethod -Uri $URI -Method GET
 
         } else {
 
-            $URI = "$($ISPSSSession.tenant_url)/api/secret-stores"
+            $URI = "$(Resolve-RequestUrl)/api/secret-stores"
 
             $boundParameters = $PSBoundParameters | Get-Parameter -ParametersToRemove FilterCriteria
 

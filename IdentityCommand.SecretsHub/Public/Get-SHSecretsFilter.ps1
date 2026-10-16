@@ -22,7 +22,7 @@ function Get-SHSecretsFilter {
 
     process {
 
-        $URI = "$($ISPSSSession.tenant_url)/api/secret-stores/$storeId/filters"
+        $URI = "$(Resolve-RequestUrl)/api/secret-stores/$storeId/filters"
 
         if ($PSCmdlet.ParameterSetName -eq 'byId') {
             $URI = "$URI/$filterId"

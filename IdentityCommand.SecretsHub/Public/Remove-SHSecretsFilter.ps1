@@ -22,7 +22,7 @@ function Remove-SHSecretsFilter {
 
     process {
 
-        $URI = "$($ISPSSSession.tenant_url)/api/secret-stores/$storeId/filters/$filterId"
+        $URI = "$(Resolve-RequestUrl)/api/secret-stores/$storeId/filters/$filterId"
 
         if ($PSCmdlet.ShouldProcess($filterId, 'Delete Secrets Filter')) {
 

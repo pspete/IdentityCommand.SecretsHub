@@ -31,14 +31,6 @@ function Get-SHSyncPolicy {
             ValueFromPipelinebyPropertyName = $true,
             ParameterSetName = 'byQuery'
         )]
-        [ValidateRange(0, 150000)]
-        [int]$offset,
-
-        [parameter(
-            Mandatory = $false,
-            ValueFromPipelinebyPropertyName = $true,
-            ParameterSetName = 'byQuery'
-        )]
         [ValidateRange(1, 1000)]
         [int]$limit
     )
@@ -49,7 +41,7 @@ function Get-SHSyncPolicy {
 
         if ($PSCmdlet.ParameterSetName -eq 'byId') {
 
-            $URI = "$($ISPSSSession.tenant_url)/api/policies/$policyId"
+            $URI = "$(Resolve-RequestUrl)/api/policies/$policyId"
             $URI = Add-QueryString -URI $URI -Parameter ($PSBoundParameters | Get-Parameter -ParametersToRemove policyId)
 
             #Send Request
@@ -57,7 +49,7 @@ function Get-SHSyncPolicy {
 
         } else {
 
-            $URI = "$($ISPSSSession.tenant_url)/api/policies"
+            $URI = "$(Resolve-RequestUrl)/api/policies"
             $URI = Add-QueryString -URI $URI -Parameter ($PSBoundParameters | Get-Parameter)
 
             #Send Request

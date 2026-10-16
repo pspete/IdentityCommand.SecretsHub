@@ -14,7 +14,7 @@ Gets sync policies
 
 ### byQuery (Default)
 ```
-Get-SHSyncPolicy [-filter <String>] [-projection <String>] [-offset <Int32>] [-limit <Int32>]
+Get-SHSyncPolicy [-filter <String>] [-projection <String>] [-limit <Int32>]
  [<CommonParameters>]
 ```
 
@@ -104,21 +104,6 @@ Type: String
 Parameter Sets: (All)
 Aliases: 
 Accepted values: EXTEND, REGULAR, METADATA
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -offset
-The number of policies to skip before returning results.
-
-```yaml
-Type: Int32
-Parameter Sets: byQuery
-Aliases: 
 
 Required: False
 Position: Named

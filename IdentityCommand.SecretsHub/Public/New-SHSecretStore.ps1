@@ -42,7 +42,7 @@ function New-SHSecretStore {
 
     process {
 
-        $URI = "$($ISPSSSession.tenant_url)/api/secret-stores"
+        $URI = "$(Resolve-RequestUrl)/api/secret-stores"
 
         $body = $PSBoundParameters | Get-Parameter | ConvertTo-Json -Depth 8
 

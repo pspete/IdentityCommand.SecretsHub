@@ -29,13 +29,6 @@ function Get-SHSecret {
             Mandatory = $false,
             ValueFromPipelinebyPropertyName = $true
         )]
-        [ValidateRange(0, 150000)]
-        [int]$offset,
-
-        [parameter(
-            Mandatory = $false,
-            ValueFromPipelinebyPropertyName = $true
-        )]
         [ValidateRange(1, 1000)]
         [int]$limit,
 
@@ -58,7 +51,7 @@ function Get-SHSecret {
 
     process {
 
-        $URI = "$($ISPSSSession.tenant_url)/api/secrets"
+        $URI = "$(Resolve-RequestUrl)/api/secrets"
 
         $boundParameters = $PSBoundParameters | Get-Parameter -ParametersToRemove FilterCriteria
 
